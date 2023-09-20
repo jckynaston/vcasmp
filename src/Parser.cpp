@@ -48,13 +48,12 @@ int Parser::read_line()
   }
 }
 
-
 /// @brief Constructs an AST for the input file
 /// @return Returns true on success. On failure, exit program and print error to `STDERR`.
 int Parser::pass_first()
 {
   while( read_line() ) {
-    parse_instruction( line_cur_str, lines[ line_cur_id ] );
+    parse_line( line_cur_str, lines[ line_cur_id ] );
   }
 
   for( auto& inst : lines ) {
@@ -64,7 +63,9 @@ int Parser::pass_first()
       auto        loc    = symbol_table.find( symbol );
       if( loc != symbol_table.end() ) {
         std::cerr << std::format(
-          "identifier \x1B[31m{}\033[0m on line {} already defined", symbol, inst.line_no )
+          "identifier \x1B[31m{}\033[0m on line {} already defined",
+          symbol,
+          inst.line_no )
                   << std::endl;
         exit( EXIT_FAILURE );
       }
@@ -76,7 +77,7 @@ int Parser::pass_first()
   return true;
 }
 
-int Parser::parse_instruction( const std::string in_str, Instruction& inst )
+int Parser::parse_line( const std::string in_str, Instruction& inst )
 {
   // set line number in AST instruction
   inst.line_no = line_cur_id;
@@ -85,6 +86,40 @@ int Parser::parse_instruction( const std::string in_str, Instruction& inst )
   if( ( in_str.find( "=" ) != std::string::npos )
       || ( in_str.find( "equ" ) != std::string::npos ) )
     parse_declaration( in_str, inst );
+  else if( in_str.find( "." ) != std::string::npos ) {
+    parse_directive( in_str, inst );
+  }
+  return true;
+}
+
+int Parser::parse_label( const std::string in_str, Instruction& inst )
+{
+  inst.line_type = type_lab;
+  operand_t l_name;
+  parse_symbol(in_str, l_name);
+}
+
+int Parser::parse_directive( const std::string in_str, Instruction& inst )
+{
+  inst.line_type = type_dir;
+
+  // tokenize across whitespace
+  std::vector< std::string > tokens;
+  std::stringstream          ss( reduce( in_str ) );
+  std::string                token;
+  while( getline( ss, token, ' ' ) ) {
+    tokens.push_back( token );
+  }
+
+  // if label is present parse this separately
+  if( tokens[ 0 ].find( ':' ) != std::string::npos ) {
+    operand_t label;
+    parse_symbol( tokens[ 0 ].substr( 0, tokens[ 0 ].length() - 1 ), label );
+    inst.label = label.as_string();
+  }
+  else {
+  }
+
   return true;
 }
 
@@ -110,7 +145,7 @@ int Parser::parse_declaration( const std::string in_str, Instruction& inst )
     goto error;
   }
 
-  if( FLAG_VERBOSE ) {
+  if( is_verbose ) {
     std::cout << "Line: " << line_cur_id << " | Found symbol [" << inst.op1
               << "] with value [0x" << inst.op2 << "]" << std::endl;
   }
@@ -121,6 +156,11 @@ error:
   err_msg = "Invalid declaration: " + err_msg;
   throw_error();
   return false;
+}
+
+int Parser::parse_operand( const std::string in_str, operand_t& op )
+{
+  return 0;
 }
 
 int Parser::parse_symbol( const std::string in_str, operand_t& op )
