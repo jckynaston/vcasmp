@@ -59,5 +59,5 @@ ${OBJ_DIR_TST}/%.o: ${SRC_DIR_TST}/%.cpp
 ${OUT_DIR_TST}/%: ${filter-out build/main.o, ${OBJS}} ${OBJ_DIR_TST}/%.o ${OBJ_DIR_TST}/catch_amalgamated.o
 	${CC} ${FLAGS} -I${INC_DIR} -I${SRC_DIR_TST} -o $@ $^
 
-test_run:
+test_run: test
 	${TST_EXECUTE_CMDS}
