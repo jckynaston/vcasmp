@@ -1,0 +1,48 @@
+\doxysection{Parser.\+hpp}
+\hypertarget{Parser_8hpp_source}{}\label{Parser_8hpp_source}\index{include/Parser.hpp@{include/Parser.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PARSER6502\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PARSER6502\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ LEN\_MAX\_ID\ 256}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}AST.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParser}{Parser}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ std::vector<\ Instruction\ >\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lines;}
+\DoxyCodeLine{00018\ \ \ std::vector<\ std::string\ >\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lines\_str;}
+\DoxyCodeLine{00019\ \ \ uint16\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ id\_current\_line\ =\ -\/1;}
+\DoxyCodeLine{00020\ \ \ uint16\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ id\_current\_addr\ =\ 0x00;}
+\DoxyCodeLine{00021\ \ \ std::string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\_cur\_str;}
+\DoxyCodeLine{00022\ \ \ std::unordered\_map<\ std::string,\ uint16\_t\ >\ symbol\_table;}
+\DoxyCodeLine{00023\ \ \ std::string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ err\_msg\ \ \ \ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_verbose\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{classParser}{Parser}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{classParser}{Parser}}(\ \textcolor{keyword}{const}\ std::string\ file\_name\ );}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ throw\_error();}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{int}\ \ read\_file(\ \textcolor{keyword}{const}\ std::string\ file\_name\ );}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{int}\ \ read\_line();}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{int}\ \ pass\_first();}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{int}\ \ parse\_line(\ \textcolor{keyword}{const}\ std::string\ in\_str,\ \mbox{\hyperlink{structInstruction}{Instruction}}\&\ inst\ );}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{int}\ \ parse\_label(\ \textcolor{keyword}{const}\ std::string\ in\_str,\ \mbox{\hyperlink{structInstruction}{Instruction}}\&\ inst\ );}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{int}\ \ parse\_directive(\ \textcolor{keyword}{const}\ std::string\ in\_str,\ \mbox{\hyperlink{structInstruction}{Instruction}}\&\ inst\ );}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{int}\ \ parse\_declaration(\ \textcolor{keyword}{const}\ std::string\ in\_str,\ \mbox{\hyperlink{structInstruction}{Instruction}}\&\ inst\ );}
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{int}\ \ parse\_operand(\ \textcolor{keyword}{const}\ std::string\ in\_str,\ \mbox{\hyperlink{classoperand__t}{operand\_t}}\&\ op\ );}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{int}\ \ parse\_symbol(\ \textcolor{keyword}{const}\ std::string\ in\_str,\ \mbox{\hyperlink{classoperand__t}{operand\_t}}\&\ op\ );}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{int}\ \ parse\_value(\ \textcolor{keyword}{const}\ std::string\ in\_str,\ \mbox{\hyperlink{classoperand__t}{operand\_t}}\&\ op\ );}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

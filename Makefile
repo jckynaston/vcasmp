@@ -1,5 +1,5 @@
 CC          := g++
-FLAGS       := -std=c++20 -g
+FLAGS       := -std=c++20 -g -O0
 
 SRC_DIR     := src
 INC_DIR     := include
@@ -19,6 +19,9 @@ TST_EXES    := $(TSTS:$(SRC_DIR_TST)/%.cpp=${OUT_DIR_TST}/%)
 TST_EXECUTE_CMDS := $(TST_EXES:${OUT_DIR_TST}/%=./${OUT_DIR_TST}/%;)
 
 all: directories ${OUT_DIR}/jckasm
+
+docs: ${SRCS}
+	doxygen Doxyfile
 
 ${OBJ_DIR}/%.o: $(SRC_DIR)/%.cpp ${HDRS}
 	${CC} ${FLAGS} -I$(INC_DIR) -c $< -o $@

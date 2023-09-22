@@ -1,0 +1,69 @@
+\doxysection{include/lex.hpp File Reference}
+\hypertarget{lex_8hpp}{}\label{lex_8hpp}\index{include/lex.hpp@{include/lex.hpp}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$exception$>$}\newline
+{\ttfamily \#include $<$regex$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classlexer_1_1lexing__error}{lexer\+::lexing\+\_\+error}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{lex_8hpp_a698c904932bfc3240b4fedff172848e5}\label{lex_8hpp_a698c904932bfc3240b4fedff172848e5} 
+bool {\bfseries lexer\+::is\+\_\+directive\+\_\+mnemonic} (const string \&in)
+\item 
+\Hypertarget{lex_8hpp_af80028af041ef8c753389307dac31e6d}\label{lex_8hpp_af80028af041ef8c753389307dac31e6d} 
+bool {\bfseries lexer\+::is\+\_\+instmn} (const string \&in)
+\item 
+int \mbox{\hyperlink{lex_8hpp_a5aef645f22fa108caffcb87a1f1d0e26}{lexer\+::is\+\_\+hexval}} (const string \&in, uint16\+\_\+t \&val)
+\begin{DoxyCompactList}\small\item\em Determines whether string contains valid 16-\/bit hex value. \end{DoxyCompactList}\item 
+\Hypertarget{lex_8hpp_a89460aa278f81c898354b9b3c0995ae5}\label{lex_8hpp_a89460aa278f81c898354b9b3c0995ae5} 
+int {\bfseries lexer\+::is\+\_\+declaration} (const string \&in, string \&symbol, uint16\+\_\+t \&value)
+\item 
+\Hypertarget{lex_8hpp_a80c0336d72e6806517f23ceab0676fc1}\label{lex_8hpp_a80c0336d72e6806517f23ceab0676fc1} 
+int {\bfseries lexer\+::is\+\_\+instruction} (const string \&in, string \&label, string \&mnemonic, string \&operand)
+\item 
+\Hypertarget{lex_8hpp_a373f63e525ac34ab75e9c131ae12d7df}\label{lex_8hpp_a373f63e525ac34ab75e9c131ae12d7df} 
+int {\bfseries lexer\+::is\+\_\+identifier} (const string \&in)
+\item 
+\Hypertarget{lex_8hpp_a5329d4b801f262f6d505c62db747238c}\label{lex_8hpp_a5329d4b801f262f6d505c62db747238c} 
+int {\bfseries lexer\+::is\+\_\+value} (const string \&in, uint16\+\_\+t \&val)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Joshua C. Kynaston 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v0.\+0.\+1
+\end{DoxyVersion}
+\hypertarget{lex_8hpp_LICENSE}{}\doxysubsection{\texorpdfstring{LICENSE}{LICENSE}}\label{lex_8hpp_LICENSE}
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\hypertarget{lex_8hpp_DESCRIPTION}{}\doxysubsection{\texorpdfstring{DESCRIPTION}{DESCRIPTION}}\label{lex_8hpp_DESCRIPTION}
+This file contains functions related to input lexing. Most of this is accomplished via the {\ttfamily std\+::regex} library. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{lex_8hpp_a5aef645f22fa108caffcb87a1f1d0e26}\label{lex_8hpp_a5aef645f22fa108caffcb87a1f1d0e26} 
+\index{lex.hpp@{lex.hpp}!is\_hexval@{is\_hexval}}
+\index{is\_hexval@{is\_hexval}!lex.hpp@{lex.hpp}}
+\doxysubsubsection{\texorpdfstring{is\_hexval()}{is\_hexval()}}
+{\footnotesize\ttfamily int lexer\+::is\+\_\+hexval (\begin{DoxyParamCaption}\item[{const string \&}]{in,  }\item[{uint16\+\_\+t \&}]{val }\end{DoxyParamCaption})}
+
+
+
+Determines whether string contains valid 16-\/bit hex value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & String to be tested \\
+\hline
+{\em val} & Value contained in string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns {\ttfamily true} on success and updates {\ttfamily val} to contain the found value. On failure, returns {\ttfamily false} -\/ in this case, the value contained in {\ttfamily val} is not altered. 
+\end{DoxyReturn}

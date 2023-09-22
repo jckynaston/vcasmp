@@ -1,0 +1,68 @@
+\doxysection{lex.\+hpp}
+\hypertarget{lex_8hpp_source}{}\label{lex_8hpp_source}\index{include/lex.hpp@{include/lex.hpp}}
+\mbox{\hyperlink{lex_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <exception>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <regex>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }lexer}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classlexer_1_1lexing__error}{lexing\_error}}\ :\ \textcolor{keyword}{public}\ exception}
+\DoxyCodeLine{00028\ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{string}\ message;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classlexer_1_1lexing__error}{lexing\_error}}(\ std::string\ str\ )}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ message\ =\ str;}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{char}*\ what()}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ message.data();}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{comment}{//\ valid\ directive\ mnemonics}}
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ set<\ string\ >\ directive\_mnemonics\ =\ \{\ \textcolor{stringliteral}{"{}org"{}}\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ is\_directive\_mnemonic(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ in\ )}
+\DoxyCodeLine{00047\ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{return}\ directive\_mnemonics.contains(\ in\ );}
+\DoxyCodeLine{00049\ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{comment}{//\ valid\ instruction\ mnemonics}}
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ set<\ string\ >\ instruction\_mnemonics}
+\DoxyCodeLine{00053\ \ \ \ \ =\ \{\ \textcolor{stringliteral}{"{}adc"{}},\ \textcolor{stringliteral}{"{}and"{}},\ \textcolor{stringliteral}{"{}asl"{}},\ \textcolor{stringliteral}{"{}bcc"{}},\ \textcolor{stringliteral}{"{}bcs"{}},\ \textcolor{stringliteral}{"{}beq"{}},\ \textcolor{stringliteral}{"{}bit"{}},\ \textcolor{stringliteral}{"{}bmi"{}},\ \textcolor{stringliteral}{"{}bne"{}},\ \textcolor{stringliteral}{"{}bpl"{}},\ \textcolor{stringliteral}{"{}brk"{}},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}bvc"{}},\ \textcolor{stringliteral}{"{}bvs"{}},\ \textcolor{stringliteral}{"{}clc"{}},\ \textcolor{stringliteral}{"{}cld"{}},\ \textcolor{stringliteral}{"{}cli"{}},\ \textcolor{stringliteral}{"{}clv"{}},\ \textcolor{stringliteral}{"{}cmp"{}},\ \textcolor{stringliteral}{"{}cpx"{}},\ \textcolor{stringliteral}{"{}cpy"{}},\ \textcolor{stringliteral}{"{}dec"{}},\ \textcolor{stringliteral}{"{}dex"{}},}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}dey"{}},\ \textcolor{stringliteral}{"{}eor"{}},\ \textcolor{stringliteral}{"{}inc"{}},\ \textcolor{stringliteral}{"{}inx"{}},\ \textcolor{stringliteral}{"{}iny"{}},\ \textcolor{stringliteral}{"{}jmp"{}},\ \textcolor{stringliteral}{"{}jsr"{}},\ \textcolor{stringliteral}{"{}lda"{}},\ \textcolor{stringliteral}{"{}ldx"{}},\ \textcolor{stringliteral}{"{}ldy"{}},\ \textcolor{stringliteral}{"{}lsr"{}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}nop"{}},\ \textcolor{stringliteral}{"{}ora"{}},\ \textcolor{stringliteral}{"{}pha"{}},\ \textcolor{stringliteral}{"{}php"{}},\ \textcolor{stringliteral}{"{}pla"{}},\ \textcolor{stringliteral}{"{}plp"{}},\ \textcolor{stringliteral}{"{}rol"{}},\ \textcolor{stringliteral}{"{}ror"{}},\ \textcolor{stringliteral}{"{}rti"{}},\ \textcolor{stringliteral}{"{}sbc"{}},\ \textcolor{stringliteral}{"{}sed"{}},}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}sei"{}},\ \textcolor{stringliteral}{"{}sta"{}},\ \textcolor{stringliteral}{"{}stx"{}},\ \textcolor{stringliteral}{"{}sty"{}},\ \textcolor{stringliteral}{"{}tax"{}},\ \textcolor{stringliteral}{"{}tay"{}},\ \textcolor{stringliteral}{"{}tsx"{}},\ \textcolor{stringliteral}{"{}txa"{}},\ \textcolor{stringliteral}{"{}txs"{}},\ \textcolor{stringliteral}{"{}tya"{}}\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ is\_instmn(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ in\ )}
+\DoxyCodeLine{00060\ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ instruction\_mnemonics.contains(\ in\ );}
+\DoxyCodeLine{00062\ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{lex_8hpp_a5aef645f22fa108caffcb87a1f1d0e26}{is\_hexval}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ in,\ uint16\_t\&\ val\ );}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{int}\ is\_declaration(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ in,\ \textcolor{keywordtype}{string}\&\ symbol,\ uint16\_t\&\ value\ );}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{int}\ is\_instruction(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ in,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\&\ \ \ \ \ \ \ label,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\&\ \ \ \ \ \ \ mnemonic,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\&\ \ \ \ \ \ \ operand\ );}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{int}\ is\_identifier(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ in\ );}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{int}\ is\_value(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ in,\ uint16\_t\&\ val\ );}
+\DoxyCodeLine{00082\ \};\ \ \textcolor{comment}{//\ namespace\ lexer}}
+
+\end{DoxyCode}

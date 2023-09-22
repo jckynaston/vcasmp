@@ -1,0 +1,73 @@
+\doxysection{Parser Class Reference}
+\hypertarget{classParser}{}\label{classParser}\index{Parser@{Parser}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classParser_ae8f16c12944d95d1a6f6bc53a00d0cb1}\label{classParser_ae8f16c12944d95d1a6f6bc53a00d0cb1} 
+{\bfseries Parser} (const std\+::string file\+\_\+name)
+\item 
+\Hypertarget{classParser_ae0450174710aa13921d182ca0fbfb894}\label{classParser_ae0450174710aa13921d182ca0fbfb894} 
+void {\bfseries throw\+\_\+error} ()
+\item 
+\Hypertarget{classParser_aa83e947bb5e80e4624d351fe3f24e61e}\label{classParser_aa83e947bb5e80e4624d351fe3f24e61e} 
+int {\bfseries read\+\_\+file} (const std\+::string file\+\_\+name)
+\item 
+\Hypertarget{classParser_af528a847b962ca93a4fee2404b0b70ae}\label{classParser_af528a847b962ca93a4fee2404b0b70ae} 
+int {\bfseries read\+\_\+line} ()
+\item 
+\Hypertarget{classParser_a63506b71cbf35ed682112e2513178641}\label{classParser_a63506b71cbf35ed682112e2513178641} 
+int {\bfseries pass\+\_\+first} ()
+\item 
+\Hypertarget{classParser_a0adddda74f75c44f1298ee21bba37078}\label{classParser_a0adddda74f75c44f1298ee21bba37078} 
+int {\bfseries parse\+\_\+line} (const std\+::string in\+\_\+str, \mbox{\hyperlink{structInstruction}{Instruction}} \&inst)
+\item 
+\Hypertarget{classParser_a4aff520a54fe89798e1aba55cfb7b591}\label{classParser_a4aff520a54fe89798e1aba55cfb7b591} 
+int {\bfseries parse\+\_\+label} (const std\+::string in\+\_\+str, \mbox{\hyperlink{structInstruction}{Instruction}} \&inst)
+\item 
+\Hypertarget{classParser_aa1563ac28bc850578e5317b200018883}\label{classParser_aa1563ac28bc850578e5317b200018883} 
+int {\bfseries parse\+\_\+directive} (const std\+::string in\+\_\+str, \mbox{\hyperlink{structInstruction}{Instruction}} \&inst)
+\item 
+\Hypertarget{classParser_a7b7774ecb3a38710b3a3f2eef4da5201}\label{classParser_a7b7774ecb3a38710b3a3f2eef4da5201} 
+int {\bfseries parse\+\_\+declaration} (const std\+::string in\+\_\+str, \mbox{\hyperlink{structInstruction}{Instruction}} \&inst)
+\item 
+\Hypertarget{classParser_afe22f2cd10ec6718642f258391f92c3b}\label{classParser_afe22f2cd10ec6718642f258391f92c3b} 
+int {\bfseries parse\+\_\+operand} (const std\+::string in\+\_\+str, \mbox{\hyperlink{classoperand__t}{operand\+\_\+t}} \&op)
+\item 
+\Hypertarget{classParser_aacd8cc31fb7f20668447b45cd29c9e7e}\label{classParser_aacd8cc31fb7f20668447b45cd29c9e7e} 
+int {\bfseries parse\+\_\+symbol} (const std\+::string in\+\_\+str, \mbox{\hyperlink{classoperand__t}{operand\+\_\+t}} \&op)
+\item 
+\Hypertarget{classParser_a8b5401e9a38c9a210a0938e8c72fa0c7}\label{classParser_a8b5401e9a38c9a210a0938e8c72fa0c7} 
+int {\bfseries parse\+\_\+value} (const std\+::string in\+\_\+str, \mbox{\hyperlink{classoperand__t}{operand\+\_\+t}} \&op)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classParser_a62e7a18b588d9370185f9531a7502f5f}\label{classParser_a62e7a18b588d9370185f9531a7502f5f} 
+std\+::vector$<$ \mbox{\hyperlink{structInstruction}{Instruction}} $>$ {\bfseries lines}
+\item 
+\Hypertarget{classParser_ad63b6ebeca23a6b163685e9bb90cbd55}\label{classParser_ad63b6ebeca23a6b163685e9bb90cbd55} 
+std\+::vector$<$ std\+::string $>$ {\bfseries lines\+\_\+str}
+\item 
+\Hypertarget{classParser_a7b2db07d41d30f92faa825b258535373}\label{classParser_a7b2db07d41d30f92faa825b258535373} 
+uint16\+\_\+t {\bfseries id\+\_\+current\+\_\+line} = -\/1
+\item 
+\Hypertarget{classParser_af1f456cb8f9cd1c3087278243d55fce7}\label{classParser_af1f456cb8f9cd1c3087278243d55fce7} 
+uint16\+\_\+t {\bfseries id\+\_\+current\+\_\+addr} = 0x00
+\item 
+\Hypertarget{classParser_a177f6a3d03ba0ba0a8bb03114e68b51f}\label{classParser_a177f6a3d03ba0ba0a8bb03114e68b51f} 
+std\+::string {\bfseries line\+\_\+cur\+\_\+str}
+\item 
+\Hypertarget{classParser_ad1380cd82cabc5620c5c5920353a8431}\label{classParser_ad1380cd82cabc5620c5c5920353a8431} 
+std\+::unordered\+\_\+map$<$ std\+::string, uint16\+\_\+t $>$ {\bfseries symbol\+\_\+table}
+\item 
+\Hypertarget{classParser_a7670959cc502ec949ff9634f541bc392}\label{classParser_a7670959cc502ec949ff9634f541bc392} 
+std\+::string {\bfseries err\+\_\+msg} = "{}"{}
+\item 
+\Hypertarget{classParser_a4a725caac24aaf19ce9e0b69df36a949}\label{classParser_a4a725caac24aaf19ce9e0b69df36a949} 
+bool {\bfseries is\+\_\+verbose} = true
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/Parser.\+hpp\end{DoxyCompactItemize}

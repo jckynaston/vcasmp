@@ -1,0 +1,96 @@
+\doxysection{AST.\+hpp}
+\hypertarget{AST_8hpp_source}{}\label{AST_8hpp_source}\index{include/AST.hpp@{include/AST.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AST\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AST\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classoperand__t}{operand\_t}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00012\ \ \ std::variant<\ uint16\_t,\ std::string\ >\ data;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ std::string\ as\_string()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<\ std::string\ >(\ data\ );}
+\DoxyCodeLine{00018\ \ \ \}}
+\DoxyCodeLine{00019\ \ \ uint16\_t\ as\_int()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<\ uint16\_t\ >(\ data\ );}
+\DoxyCodeLine{00022\ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{void}\ operator=(\ std::string\ in\ )}
+\DoxyCodeLine{00024\ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ data\ =\ in;}
+\DoxyCodeLine{00026\ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{void}\ operator=(\ uint16\_t\ in\ )}
+\DoxyCodeLine{00028\ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ data\ =\ in;}
+\DoxyCodeLine{00030\ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(\ std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classoperand__t}{operand\_t}}\&\ op\ );}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{inline}\ std::ostream\&\ operator<<(\ std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classoperand__t}{operand\_t}}\&\ op\ )}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordflow}{if}(\ op.data.index()\ ==\ 0\ )}
+\DoxyCodeLine{00038\ \ \ \ \ os\ <<\ std::hex\ <<\ op.as\_int();}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00040\ \ \ \ \ os\ <<\ op.as\_string();}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00042\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{enum}\ addr\_mode\_id}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \ \ addr\_imp\ =\ 0,}
+\DoxyCodeLine{00047\ \ \ addr\_imm\ =\ 1,}
+\DoxyCodeLine{00048\ \ \ addr\_zpg\ =\ 2,}
+\DoxyCodeLine{00049\ \ \ addr\_zpx\ =\ 3,}
+\DoxyCodeLine{00050\ \ \ addr\_zpy\ =\ 4,}
+\DoxyCodeLine{00051\ \ \ addr\_izx\ =\ 5,}
+\DoxyCodeLine{00052\ \ \ addr\_izy\ =\ 6,}
+\DoxyCodeLine{00053\ \ \ addr\_abs\ =\ 7,}
+\DoxyCodeLine{00054\ \ \ addr\_abx\ =\ 8,}
+\DoxyCodeLine{00055\ \ \ addr\_aby\ =\ 9,}
+\DoxyCodeLine{00056\ \ \ addr\_ind\ =\ 10,}
+\DoxyCodeLine{00057\ \ \ addr\_rel\ =\ 11}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{enum}\ line\_type\_t}
+\DoxyCodeLine{00061\ \{}
+\DoxyCodeLine{00062\ \ \ type\_null\ =\ 0,}
+\DoxyCodeLine{00063\ \ \ type\_dec,}
+\DoxyCodeLine{00064\ \ \ type\_ins,}
+\DoxyCodeLine{00065\ \ \ type\_dir,}
+\DoxyCodeLine{00066\ \ \ type\_lab}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInstruction}{Instruction}}}
+\DoxyCodeLine{00070\ \{}
+\DoxyCodeLine{00071\ \ \ uint16\_t\ \ \ \ \ line\_no;}
+\DoxyCodeLine{00072\ \ \ line\_type\_t\ \ line\_type\ =\ type\_null;}
+\DoxyCodeLine{00073\ \ \ std::string\ \ label;}
+\DoxyCodeLine{00074\ \ \ std::string\ \ mnemonic;}
+\DoxyCodeLine{00075\ \ \ addr\_mode\_id\ addr\_mode;}
+\DoxyCodeLine{00076\ \ \ \mbox{\hyperlink{classoperand__t}{operand\_t}}\ \ \ \ op1,\ op2;}
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInstruct}{Instruct}}}
+\DoxyCodeLine{00080\ \{}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ line\_loc\ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00082\ \ \ uint16\_t\ \ \ \ \ mem\_loc\ \ \ \ \ \ \ \ =\ 0x0000;}
+\DoxyCodeLine{00083\ \ \ std::string\ \ label\ \ \ \ \ \ \ \ \ \ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00084\ \ \ std::string\ \ mnemonic\ \ \ \ \ \ \ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00085\ \ \ addr\_mode\_id\ addr\_mode\ \ \ \ \ \ =\ addr\_imp;}
+\DoxyCodeLine{00086\ \ \ uint16\_t\ \ \ \ \ operand\ \ \ \ \ \ \ \ =\ 0x0000;}
+\DoxyCodeLine{00087\ \ \ std::string\ \ operand\_symbol\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
