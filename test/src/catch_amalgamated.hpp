@@ -794,7 +794,6 @@ namespace Catch {
         Ok = 0,
         Info = 1,
         Warning = 2,
-        // TODO: Should explicit skip be considered "not OK" (cf. isOk)? I.e., should it have the failure bit?
         ExplicitSkip = 4,
 
         FailureBit = 0x10,
@@ -1462,7 +1461,6 @@ namespace Catch {
             // thanks @milleniumbug
             *reinterpret_cast<char volatile*>(p) = *reinterpret_cast<char const volatile*>(p);
         }
-        // TODO equivalent keep_memory()
 #if defined(_MSVC_VER)
 #pragma optimize("", on)
 #endif
@@ -7733,7 +7731,7 @@ namespace Detail {
 #define GENERATE( ... ) \
     Catch::Generators::generate( CATCH_INTERNAL_GENERATOR_STRINGIZE(INTERNAL_CATCH_UNIQUE_NAME(generator)), \
                                  CATCH_INTERNAL_LINEINFO, \
-                                 [ ]{ using namespace Catch::Generators; return makeGenerators( __VA_ARGS__ ); } ) //NOLINT(google-build-using-namespace)
+                                 []{ using namespace Catch::Generators; return makeGenerators( __VA_ARGS__ ); } ) //NOLINT(google-build-using-namespace)
 #define GENERATE_COPY( ... ) \
     Catch::Generators::generate( CATCH_INTERNAL_GENERATOR_STRINGIZE(INTERNAL_CATCH_UNIQUE_NAME(generator)), \
                                  CATCH_INTERNAL_LINEINFO, \
@@ -8550,7 +8548,6 @@ namespace Catch {
     class ITestCaseRegistry {
     public:
         virtual ~ITestCaseRegistry(); // = default
-        // TODO: this exists only for adding filenames to test cases -- let's expose this in a saner way later
         virtual std::vector<TestCaseInfo* > const& getAllInfos() const = 0;
         virtual std::vector<TestCaseHandle> const& getAllTests() const = 0;
         virtual std::vector<TestCaseHandle> const& getAllTestsSorted( IConfig const& config ) const = 0;
@@ -9213,9 +9210,6 @@ namespace Catch {
                              ForwardIter2 first_2,
                              const Sentinel2 end_2,
                              Comparator cmp ) {
-            // TODO: no optimization for stronger iterators, because we would also have to constrain on sentinel vs not sentinel types
-            // TODO: Comparator has to be "both sides", e.g. a == b => b == a
-            // This skips shared prefix of the two ranges
             while (first_1 != end_1 && first_2 != end_2 && cmp(*first_1, *first_2)) {
                 ++first_1;
                 ++first_2;

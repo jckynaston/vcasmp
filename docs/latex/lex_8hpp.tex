@@ -13,14 +13,12 @@ class \mbox{\hyperlink{classlexer_1_1lexing__error}{lexer\+::lexing\+\_\+error}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{lex_8hpp_a698c904932bfc3240b4fedff172848e5}\label{lex_8hpp_a698c904932bfc3240b4fedff172848e5} 
-bool {\bfseries lexer\+::is\+\_\+directive\+\_\+mnemonic} (const string \&in)
-\item 
-\Hypertarget{lex_8hpp_af80028af041ef8c753389307dac31e6d}\label{lex_8hpp_af80028af041ef8c753389307dac31e6d} 
-bool {\bfseries lexer\+::is\+\_\+instmn} (const string \&in)
-\item 
 int \mbox{\hyperlink{lex_8hpp_a5aef645f22fa108caffcb87a1f1d0e26}{lexer\+::is\+\_\+hexval}} (const string \&in, uint16\+\_\+t \&val)
 \begin{DoxyCompactList}\small\item\em Determines whether string contains valid 16-\/bit hex value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lex_8hpp_ae75c22294715a55db21b7dbb016bffa5}{lexer\+::is\+\_\+decval}} (const string \&in, uint16\+\_\+t \&val)
+\begin{DoxyCompactList}\small\item\em Determines whether string contains valid 16-\/bit decimal value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lex_8hpp_a1dec0f7ff21e4f71c647f137d957c6fd}{lexer\+::is\+\_\+binval}} (const string \&in, uint16\+\_\+t \&val)
+\begin{DoxyCompactList}\small\item\em Determines whether string contains valid 16-\/bit binary value. \end{DoxyCompactList}\item 
 \Hypertarget{lex_8hpp_a89460aa278f81c898354b9b3c0995ae5}\label{lex_8hpp_a89460aa278f81c898354b9b3c0995ae5} 
 int {\bfseries lexer\+::is\+\_\+declaration} (const string \&in, string \&symbol, uint16\+\_\+t \&value)
 \item 
@@ -47,6 +45,46 @@ This program is free software; you can redistribute it and/or modify it under th
 This file contains functions related to input lexing. Most of this is accomplished via the {\ttfamily std\+::regex} library. 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{lex_8hpp_a1dec0f7ff21e4f71c647f137d957c6fd}\label{lex_8hpp_a1dec0f7ff21e4f71c647f137d957c6fd} 
+\index{lex.hpp@{lex.hpp}!is\_binval@{is\_binval}}
+\index{is\_binval@{is\_binval}!lex.hpp@{lex.hpp}}
+\doxysubsubsection{\texorpdfstring{is\_binval()}{is\_binval()}}
+{\footnotesize\ttfamily int lexer\+::is\+\_\+binval (\begin{DoxyParamCaption}\item[{const string \&}]{in,  }\item[{uint16\+\_\+t \&}]{val }\end{DoxyParamCaption})}
+
+
+
+Determines whether string contains valid 16-\/bit binary value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & String to be tested \\
+\hline
+{\em val} & Value contained in string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns {\ttfamily true} on success and updates {\ttfamily val} to contain the found value. On failure, returns {\ttfamily false} -\/ in this case, the value contained in {\ttfamily val} is not altered. 
+\end{DoxyReturn}
+\Hypertarget{lex_8hpp_ae75c22294715a55db21b7dbb016bffa5}\label{lex_8hpp_ae75c22294715a55db21b7dbb016bffa5} 
+\index{lex.hpp@{lex.hpp}!is\_decval@{is\_decval}}
+\index{is\_decval@{is\_decval}!lex.hpp@{lex.hpp}}
+\doxysubsubsection{\texorpdfstring{is\_decval()}{is\_decval()}}
+{\footnotesize\ttfamily int lexer\+::is\+\_\+decval (\begin{DoxyParamCaption}\item[{const string \&}]{in,  }\item[{uint16\+\_\+t \&}]{val }\end{DoxyParamCaption})}
+
+
+
+Determines whether string contains valid 16-\/bit decimal value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & String to be tested \\
+\hline
+{\em val} & Value contained in string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns {\ttfamily true} on success and updates {\ttfamily val} to contain the found value. On failure, returns {\ttfamily false} -\/ in this case, the value contained in {\ttfamily val} is not altered. 
+\end{DoxyReturn}
 \Hypertarget{lex_8hpp_a5aef645f22fa108caffcb87a1f1d0e26}\label{lex_8hpp_a5aef645f22fa108caffcb87a1f1d0e26} 
 \index{lex.hpp@{lex.hpp}!is\_hexval@{is\_hexval}}
 \index{is\_hexval@{is\_hexval}!lex.hpp@{lex.hpp}}

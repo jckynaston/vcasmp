@@ -112,15 +112,15 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a698c904932bfc3240b4fedff172848e5" id="r_a698c904932bfc3240b4fedff172848e5"><td class="memItemLeft" align="right" valign="top"><a id="a698c904932bfc3240b4fedff172848e5" name="a698c904932bfc3240b4fedff172848e5"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>lexer::is_directive_mnemonic</b> (const string &amp;in)</td></tr>
-<tr class="separator:a698c904932bfc3240b4fedff172848e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af80028af041ef8c753389307dac31e6d" id="r_af80028af041ef8c753389307dac31e6d"><td class="memItemLeft" align="right" valign="top"><a id="af80028af041ef8c753389307dac31e6d" name="af80028af041ef8c753389307dac31e6d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>lexer::is_instmn</b> (const string &amp;in)</td></tr>
-<tr class="separator:af80028af041ef8c753389307dac31e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5aef645f22fa108caffcb87a1f1d0e26" id="r_a5aef645f22fa108caffcb87a1f1d0e26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8hpp.html#a5aef645f22fa108caffcb87a1f1d0e26">lexer::is_hexval</a> (const string &amp;in, uint16_t &amp;val)</td></tr>
 <tr class="memdesc:a5aef645f22fa108caffcb87a1f1d0e26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether string contains valid 16-bit hex value.  <br /></td></tr>
 <tr class="separator:a5aef645f22fa108caffcb87a1f1d0e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae75c22294715a55db21b7dbb016bffa5" id="r_ae75c22294715a55db21b7dbb016bffa5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8hpp.html#ae75c22294715a55db21b7dbb016bffa5">lexer::is_decval</a> (const string &amp;in, uint16_t &amp;val)</td></tr>
+<tr class="memdesc:ae75c22294715a55db21b7dbb016bffa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether string contains valid 16-bit decimal value.  <br /></td></tr>
+<tr class="separator:ae75c22294715a55db21b7dbb016bffa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dec0f7ff21e4f71c647f137d957c6fd" id="r_a1dec0f7ff21e4f71c647f137d957c6fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8hpp.html#a1dec0f7ff21e4f71c647f137d957c6fd">lexer::is_binval</a> (const string &amp;in, uint16_t &amp;val)</td></tr>
+<tr class="memdesc:a1dec0f7ff21e4f71c647f137d957c6fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether string contains valid 16-bit binary value.  <br /></td></tr>
+<tr class="separator:a1dec0f7ff21e4f71c647f137d957c6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89460aa278f81c898354b9b3c0995ae5" id="r_a89460aa278f81c898354b9b3c0995ae5"><td class="memItemLeft" align="right" valign="top"><a id="a89460aa278f81c898354b9b3c0995ae5" name="a89460aa278f81c898354b9b3c0995ae5"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>lexer::is_declaration</b> (const string &amp;in, string &amp;symbol, uint16_t &amp;value)</td></tr>
 <tr class="separator:a89460aa278f81c898354b9b3c0995ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,6 +144,82 @@ LICENSE</h1>
 DESCRIPTION</h1>
 <p>This file contains functions related to input lexing. Most of this is accomplished via the <code>std::regex</code> library. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a1dec0f7ff21e4f71c647f137d957c6fd" name="a1dec0f7ff21e4f71c647f137d957c6fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dec0f7ff21e4f71c647f137d957c6fd">&#9670;&#160;</a></span>is_binval()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lexer::is_binval </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t &amp;&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines whether string contains valid 16-bit binary value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>String to be tested </td></tr>
+    <tr><td class="paramname">val</td><td>Value contained in string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success and updates <code>val</code> to contain the found value. On failure, returns <code>false</code> - in this case, the value contained in <code>val</code> is not altered. </dd></dl>
+
+</div>
+</div>
+<a id="ae75c22294715a55db21b7dbb016bffa5" name="ae75c22294715a55db21b7dbb016bffa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae75c22294715a55db21b7dbb016bffa5">&#9670;&#160;</a></span>is_decval()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lexer::is_decval </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t &amp;&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines whether string contains valid 16-bit decimal value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>String to be tested </td></tr>
+    <tr><td class="paramname">val</td><td>Value contained in string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success and updates <code>val</code> to contain the found value. On failure, returns <code>false</code> - in this case, the value contained in <code>val</code> is not altered. </dd></dl>
+
+</div>
+</div>
 <a id="a5aef645f22fa108caffcb87a1f1d0e26" name="a5aef645f22fa108caffcb87a1f1d0e26"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5aef645f22fa108caffcb87a1f1d0e26">&#9670;&#160;</a></span>is_hexval()</h2>
 

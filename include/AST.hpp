@@ -76,4 +76,15 @@ struct Instruction
   operand_t    op1, op2;
 };
 
+struct Instruct
+{
+  size_t       line_loc       = 0;
+  uint16_t     mem_loc        = 0x0000;
+  std::string  label          = "";
+  std::string  mnemonic       = "";
+  addr_mode_id addr_mode      = addr_imp;
+  uint16_t     operand        = 0x0000;
+  std::string  operand_symbol = "";
+};
+
 #endif

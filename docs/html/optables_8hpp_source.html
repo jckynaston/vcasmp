@@ -99,21 +99,35 @@ $(document).ready(function(){initNavTree('optables_8hpp_source.html',''); initRe
   <div class="headertitle"><div class="title">optables.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef OPTABLES_HPP</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define OPTABLES_HPP</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;AST.hpp&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">using </span>optable</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  = std::unordered_map&lt; std::string,</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>                        std::unordered_map&lt; addr_mode_id, uint8_t &gt; &gt;;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">extern</span> optable opc6502;</div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#ifndef OPTABLES_HPP</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define OPTABLES_HPP</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;set&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;AST.hpp&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">using </span>optable</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  = std::unordered_map&lt; std::string, std::unordered_map&lt; addr_mode_id, uint8_t &gt; &gt;;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">extern</span> optable opc6502;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">const</span> <span class="keyword">static</span> std::set&lt; std::string &gt; mode_imp_instructions</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  = { <span class="stringliteral">&quot;tax&quot;</span>, <span class="stringliteral">&quot;tay&quot;</span>, <span class="stringliteral">&quot;tsx&quot;</span>, <span class="stringliteral">&quot;txa&quot;</span>, <span class="stringliteral">&quot;txs&quot;</span>, <span class="stringliteral">&quot;tya&quot;</span>, <span class="stringliteral">&quot;pha&quot;</span>, <span class="stringliteral">&quot;php&quot;</span>, <span class="stringliteral">&quot;pla&quot;</span>,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>      <span class="stringliteral">&quot;plp&quot;</span>, <span class="stringliteral">&quot;dex&quot;</span>, <span class="stringliteral">&quot;dey&quot;</span>, <span class="stringliteral">&quot;inx&quot;</span>, <span class="stringliteral">&quot;iny&quot;</span>, <span class="stringliteral">&quot;brk&quot;</span>, <span class="stringliteral">&quot;rti&quot;</span>, <span class="stringliteral">&quot;rts&quot;</span>, <span class="stringliteral">&quot;clc&quot;</span>,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>      <span class="stringliteral">&quot;cld&quot;</span>, <span class="stringliteral">&quot;cli&quot;</span>, <span class="stringliteral">&quot;clv&quot;</span>, <span class="stringliteral">&quot;sec&quot;</span>, <span class="stringliteral">&quot;sed&quot;</span>, <span class="stringliteral">&quot;sei&quot;</span>, <span class="stringliteral">&quot;nop&quot;</span> };</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">const</span> <span class="keyword">static</span> std::set&lt; std::string &gt; mnems_instructions</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  = { <span class="stringliteral">&quot;adc&quot;</span>, <span class="stringliteral">&quot;and&quot;</span>, <span class="stringliteral">&quot;asl&quot;</span>, <span class="stringliteral">&quot;bcc&quot;</span>, <span class="stringliteral">&quot;bcs&quot;</span>, <span class="stringliteral">&quot;beq&quot;</span>, <span class="stringliteral">&quot;bit&quot;</span>, <span class="stringliteral">&quot;bmi&quot;</span>, <span class="stringliteral">&quot;bne&quot;</span>, <span class="stringliteral">&quot;bpl&quot;</span>, <span class="stringliteral">&quot;brk&quot;</span>,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>      <span class="stringliteral">&quot;bvc&quot;</span>, <span class="stringliteral">&quot;bvs&quot;</span>, <span class="stringliteral">&quot;clc&quot;</span>, <span class="stringliteral">&quot;cld&quot;</span>, <span class="stringliteral">&quot;cli&quot;</span>, <span class="stringliteral">&quot;clv&quot;</span>, <span class="stringliteral">&quot;cmp&quot;</span>, <span class="stringliteral">&quot;cpx&quot;</span>, <span class="stringliteral">&quot;cpy&quot;</span>, <span class="stringliteral">&quot;dec&quot;</span>, <span class="stringliteral">&quot;dex&quot;</span>,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>      <span class="stringliteral">&quot;dey&quot;</span>, <span class="stringliteral">&quot;eor&quot;</span>, <span class="stringliteral">&quot;inc&quot;</span>, <span class="stringliteral">&quot;inx&quot;</span>, <span class="stringliteral">&quot;iny&quot;</span>, <span class="stringliteral">&quot;jmp&quot;</span>, <span class="stringliteral">&quot;jsr&quot;</span>, <span class="stringliteral">&quot;lda&quot;</span>, <span class="stringliteral">&quot;ldx&quot;</span>, <span class="stringliteral">&quot;ldy&quot;</span>, <span class="stringliteral">&quot;lsr&quot;</span>,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>      <span class="stringliteral">&quot;nop&quot;</span>, <span class="stringliteral">&quot;ora&quot;</span>, <span class="stringliteral">&quot;pha&quot;</span>, <span class="stringliteral">&quot;php&quot;</span>, <span class="stringliteral">&quot;pla&quot;</span>, <span class="stringliteral">&quot;plp&quot;</span>, <span class="stringliteral">&quot;rol&quot;</span>, <span class="stringliteral">&quot;ror&quot;</span>, <span class="stringliteral">&quot;rti&quot;</span>, <span class="stringliteral">&quot;sbc&quot;</span>, <span class="stringliteral">&quot;sed&quot;</span>,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>      <span class="stringliteral">&quot;sei&quot;</span>, <span class="stringliteral">&quot;sta&quot;</span>, <span class="stringliteral">&quot;stx&quot;</span>, <span class="stringliteral">&quot;sty&quot;</span>, <span class="stringliteral">&quot;tax&quot;</span>, <span class="stringliteral">&quot;tay&quot;</span>, <span class="stringliteral">&quot;tsx&quot;</span>, <span class="stringliteral">&quot;txa&quot;</span>, <span class="stringliteral">&quot;txs&quot;</span>, <span class="stringliteral">&quot;tya&quot;</span> };</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

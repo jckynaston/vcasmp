@@ -2947,7 +2947,6 @@ namespace Catch {
                     return ParserResult::ok(ParseResultType::Matched);
                 }
 
-                // TODO: ideally we should be parsing uint32_t directly
                 //       fix this later when we add new parse overload
                 auto parsedSeed = parseUInt( seed, 0 );
                 if ( !parsedSeed ) {
@@ -5678,8 +5677,6 @@ namespace Catch {
         if ( !isOk ) {
             populateReaction( reaction );
         } else if ( resultType == ResultWas::ExplicitSkip ) {
-            // TODO: Need to handle this explicitly, as ExplicitSkip is
-            // considered "OK"
             reaction.shouldSkip = true;
         }
     }
@@ -8658,7 +8655,6 @@ void ConsoleReporter::assertionEnded(AssertionStats const& _assertionStats) {
     bool includeResults = m_config->includeSuccessfulResults() || !result.isOk();
 
     // Drop out if result was successful but we're not printing them.
-    // TODO: Make configurable whether skips should be printed
     if (!includeResults && result.getResultType() != ResultWas::Warning && result.getResultType() != ResultWas::ExplicitSkip)
         return;
 
@@ -10139,7 +10135,7 @@ namespace Catch {
                     printOriginalExpression();
                     printReconstructedExpression();
                     if (result.isOk()) {
-                        printIssue(" # TODO");
+                        printIssue(" # TDO");
                     }
                     printRemainingMessages();
                     break;
